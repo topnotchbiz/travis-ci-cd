@@ -1,9 +1,16 @@
-language: python
-os:
-  - linux
-  - osx
-  - windows
 python: 3.6
+jobs:
+  include:
+    - os: windows
+      language: minimal
+      env: PATH=/c/Python36:/c/Python36/Scripts:$PATH
+      before_install:
+        - choco install python --version 3.6.8
+        - python -m pip install --upgrade pip
+    - os: linux
+    - os: osx
+      language: minimal
+
 install:
   - pip install -r requirements.txt
 # command to run tests
