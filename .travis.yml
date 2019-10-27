@@ -20,44 +20,44 @@ jobs:
   - stage: Tests in Linux
     name: Python 3.8.0 on Xenial Linux
     python: 3.8
-#  - name: Python 3.8.0 on Bionic Linux
-#    python: 3.8
-#    dist: bionic
-#  - name: Python 3.7.4 on Xenial Linux
-#    python: 3.7
-#  - name: Python 3.8 dev on Xenial Linux
-#    python: 3.8-dev
-#    script:
-#    - exit 1
-#  - stage: Tests in other Platforms
-#    name: Python 3.7.4 on macOS
-#    os: osx
-#    osx_image: xcode11.2
-#    language: shell
-#  - name: Python 3.8.0 on Windows
-#    os: windows
-#    language: shell
-#    before_install:
-#    - choco install python --version 3.8.0
-#    - python -m pip install --upgrade pip
-#    env: PATH=/c/Python38:/c/Python38/Scripts:$PATH
-#  - stage: Deploy
-#    name: Deploy to PyPI
-#    if: "(branch = master) AND (type = push)"
-#    python: 3.8
-#    install: skip  # no tests, no depedencies needed
-#    script: skip  # we're not running tests
-#    deploy:
-#      on:
-#        branch: master
-#      provider: pypi
-#      user: __token__
-#      password:
-#        secure: lrve4Qua/gKa6603cUkxPujeKZenD7POaKTPJIA+EikklVv/L79AxWfikOXkSPy+XJO+4cuJ69yvGg6EX+cFkdg20Gk4dFP5Sfe6hvjthzo2ZQfnJjigOAqcuU5hPacybYBJCMY7gojOl0Hkekx8IuUIoHQtgT1dETMONRIUAUSGwsYEjdgXhSkpxWeFBIG2D9hgCBNihNGRGSxh8Xnx90+22by0hOkF/UQy3KPp3hH6IzEYmoKGaL72521ixWYs8YwPue6O15OTpiVY0WgqbyX3HIyhwleS4Daw1bwW9rJ4+Lh+7gHU+evAYygOyokFvjhNhu410meQJ3ZqxtoW2xlKHP0f3bV04UoOnmtEOJAqHUah+o2NwEuK0zGHInk87OrW8A83HZixyS8DP2d/9fFL4S/WUj+3LjJoxJ8KiHdqKGaMz1TldVkLcrkggDTGD5SuxBuu4eGgd0WRx/GyXAwYvx2Jmqz2RzaDLnNrLYnWVzej9hj/Yv1/StntjB4z4ZHwF1FYZcSWspDhCYZogIQxhTGjO/7AERWsd8jwNUlwjEHUcR6RMXdzhbaEM0lJba514ZKherARGZ8+rE5MG7r4pZ9LThXCVgWSXvLbyyHsrLsnN1SxbbkGOQPnMQg28A+IgyOn9yI4cZ1AnBzaB447y17OSZZuXchqjkVIIvw=
-#      distributions: "sdist bdist_wheel"
-#      skip_existing: true
+  - name: Python 3.8.0 on Bionic Linux
+    python: 3.8
+    dist: bionic
+  - name: Python 3.7.4 on Xenial Linux
+    python: 3.7
+  - name: Python 3.8 dev on Xenial Linux
+    python: 3.8-dev
+    script:
+    - exit 1
+  - stage: Tests in other Platforms
+    name: Python 3.7.4 on macOS
+    os: osx
+    osx_image: xcode11.2
+    language: shell
+  - name: Python 3.8.0 on Windows
+    os: windows
+    language: shell
+    before_install:
+    - choco install python --version 3.8.0
+    - python -m pip install --upgrade pip
+    env: PATH=/c/Python38:/c/Python38/Scripts:$PATH
+  - stage: Deploy
+    name: Deploy to PyPI
+    if: "(branch = master) AND (type = push)"
+    python: 3.8
+    install: skip  # no tests, no depedencies needed
+    script: skip  # we're not running tests
+    deploy:
+      on:
+        branch: master
+      provider: pypi
+      user: __token__
+      password:
+        secure: lrve4Qua/gKa6603cUkxPujeKZenD7POaKTPJIA+EikklVv/L79AxWfikOXkSPy+XJO+4cuJ69yvGg6EX+cFkdg20Gk4dFP5Sfe6hvjthzo2ZQfnJjigOAqcuU5hPacybYBJCMY7gojOl0Hkekx8IuUIoHQtgT1dETMONRIUAUSGwsYEjdgXhSkpxWeFBIG2D9hgCBNihNGRGSxh8Xnx90+22by0hOkF/UQy3KPp3hH6IzEYmoKGaL72521ixWYs8YwPue6O15OTpiVY0WgqbyX3HIyhwleS4Daw1bwW9rJ4+Lh+7gHU+evAYygOyokFvjhNhu410meQJ3ZqxtoW2xlKHP0f3bV04UoOnmtEOJAqHUah+o2NwEuK0zGHInk87OrW8A83HZixyS8DP2d/9fFL4S/WUj+3LjJoxJ8KiHdqKGaMz1TldVkLcrkggDTGD5SuxBuu4eGgd0WRx/GyXAwYvx2Jmqz2RzaDLnNrLYnWVzej9hj/Yv1/StntjB4z4ZHwF1FYZcSWspDhCYZogIQxhTGjO/7AERWsd8jwNUlwjEHUcR6RMXdzhbaEM0lJba514ZKherARGZ8+rE5MG7r4pZ9LThXCVgWSXvLbyyHsrLsnN1SxbbkGOQPnMQg28A+IgyOn9yI4cZ1AnBzaB447y17OSZZuXchqjkVIIvw=
+      distributions: "sdist bdist_wheel"
+      skip_existing: true
   - name: Deploy to Dockerhub
-    if: "(branch = module-5) AND (type = push)"
+    if: "(branch = master) AND (type = push)"
     python: 3.8
     install: skip  # no tests, no depedencies needed
     script: sh .travis/deploy_dockerhub.sh
