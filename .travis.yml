@@ -5,6 +5,8 @@ git:
 language: python            # this works for Linux but is an error on macOS or Windows
 cache: pip
 jobs:
+  allow_failures:
+    - python: 3.8-dev
   include:
     - stage: "Tests in Linux"
       name: "Python 3.8.0 on Xenial Linux"
@@ -36,9 +38,6 @@ jobs:
       python: 3.8
       script:
         - echo "Deploying (for now)"
-
-  allow_failures:
-    - python: 3.8-dev
 install:
   - pip3 install --upgrade pip  # all three OSes agree about 'pip3'
   - pip3 install -r requirements.txt
