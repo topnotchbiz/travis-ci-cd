@@ -57,7 +57,7 @@ jobs:
       distributions: "sdist bdist_wheel"
       skip_existing: true
   - name: Deploy to Dockerhub
-    if: "(branch = master) AND (type = push)"
+    if: "(branch = module-5) AND (type = push)"
     python: 3.8
     install: skip  # no tests, no depedencies needed
     script: sh .travis/deploy_dockerhub.sh
