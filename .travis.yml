@@ -6,7 +6,8 @@ language: python            # this works for Linux but is an error on macOS or W
 cache: pip
 jobs:
   include:
-    - name: "Python 3.8.0 on Xenial Linux"
+    - stage: "Tests in Linux"
+      name: "Python 3.8.0 on Xenial Linux"
       python: 3.8           # this works for Linux but is ignored on macOS or Windows
     - name: "Python 3.8.0 on Bionic Linux"
       python: 3.8
@@ -15,7 +16,8 @@ jobs:
       python: 3.7
     - name: "Python 3.8 dev on Xenial Linux"
       python: 3.8-dev
-    - name: "Python 3.7.4 on macOS"
+    - stage: "Tests in other Platforms"
+      name: "Python 3.7.4 on macOS"
       os: osx
       osx_image: xcode11.2  # Python 3.7.4 running on macOS 10.14.4
       language: shell       # 'language: python' is an error on Travis CI macOS
@@ -26,6 +28,15 @@ jobs:
         - choco install python --version 3.8.0
         - python -m pip install --upgrade pip
       env: PATH=/c/Python38:/c/Python38/Scripts:$PATH
+    - stage: "Deploy"
+      on:
+        branch: master
+      os: linux
+      dist: xenial
+      python: 3.8
+      script:
+        - echo "Deploying (for now)"
+
   allow_failures:
     - python: 3.8-dev
 install:
