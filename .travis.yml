@@ -21,6 +21,8 @@ jobs:
         - choco install python --version 3.8.0
         - python -m pip install --upgrade pip
       env: PATH=/c/Python38:/c/Python38/Scripts:$PATH
+  allow_failures:
+    - python: 3.8-dev
 install:
   - pip3 install --upgrade pip  # all three OSes agree about 'pip3'
   - pip3 install -r requirements.txt
@@ -29,32 +31,4 @@ install:
 # 'python3' is a 'command not found' error on Windows but 'py' works on Windows only
 script:
   - python3 -m pytest -v || python -m pytest -v
-#
-#language: python
-#jobs:
-#  include:
-#    - os: linux
-#      dist: xenial
-#      python: 3.6
-#    - os: linux
-#      dist: xenial
-#      python: 3.7
-#    - os: linux
-#      dist: bionic
-#      python: 3.6
-#    - os: linux
-#      dist: bionic
-#      python: 3.7
-#    - os: osx
-#      osx_image: xcode10
-#      language: generic
-#      env: PYTHON=36
-#
-#install:
-#  - pip install -r requirements.txt
-## command to run tests
-#
-## 'python' points to Python 2.7 on macOS but points to Python 3.8 on Linux and Windows
-## 'python3' is a 'command not found' error on Windows but 'py' works on Windows only
-#script:
-#  - python3 -m pytest -v || python -m pytest -v
+
