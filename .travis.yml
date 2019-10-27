@@ -4,6 +4,24 @@ git:
   depth: 3
 language: python
 cache: pip
+deploy:
+    if: "(branch = module-5)" # AND (NOT (type IN (push, pull_request)))"
+    os: linux
+    dist: xenial
+    python: 3.8
+    provider: pypi
+    user: __token__
+    password:
+      secure: lrve4Qua/gKa6603cUkxPujeKZenD7POaKTPJIA+EikklVv/L79AxWfikOXkSPy+XJO+4cuJ69yvGg6EX+cFkdg20Gk4dFP5Sfe6hvjthzo2ZQfnJjigOAqcuU5hPacybYBJCMY7gojOl0Hkekx8IuUIoHQtgT1dETMONRIUAUSGwsYEjdgXhSkpxWeFBIG2D9hgCBNihNGRGSxh8Xnx90+22by0hOkF/UQy3KPp3hH6IzEYmoKGaL72521ixWYs8YwPue6O15OTpiVY0WgqbyX3HIyhwleS4Daw1bwW9rJ4+Lh+7gHU+evAYygOyokFvjhNhu410meQJ3ZqxtoW2xlKHP0f3bV04UoOnmtEOJAqHUah+o2NwEuK0zGHInk87OrW8A83HZixyS8DP2d/9fFL4S/WUj+3LjJoxJ8KiHdqKGaMz1TldVkLcrkggDTGD5SuxBuu4eGgd0WRx/GyXAwYvx2Jmqz2RzaDLnNrLYnWVzej9hj/Yv1/StntjB4z4ZHwF1FYZcSWspDhCYZogIQxhTGjO/7AERWsd8jwNUlwjEHUcR6RMXdzhbaEM0lJba514ZKherARGZ8+rE5MG7r4pZ9LThXCVgWSXvLbyyHsrLsnN1SxbbkGOQPnMQg28A+IgyOn9yI4cZ1AnBzaB447y17OSZZuXchqjkVIIvw=
+    distributions: "sdist bdist_wheel"
+    skip_existing: true
+
+install:
+- pip3 install --upgrade pip
+- pip3 install -r requirements.txt
+script:
+- python3 -m pytest -v || python -m pytest -v
+
 jobs:
   allow_failures:
   - python: 3.8-dev
@@ -32,19 +50,3 @@ jobs:
     - choco install python --version 3.8.0
     - python -m pip install --upgrade pip
     env: PATH=/c/Python38:/c/Python38/Scripts:$PATH
-  - stage: deploy
-    if: "(branch = module-5)" # AND (NOT (type IN (push, pull_request)))"
-    os: linux
-    dist: xenial
-    python: 3.8
-    provider: pypi
-    user: __token__
-    password:
-      secure: lrve4Qua/gKa6603cUkxPujeKZenD7POaKTPJIA+EikklVv/L79AxWfikOXkSPy+XJO+4cuJ69yvGg6EX+cFkdg20Gk4dFP5Sfe6hvjthzo2ZQfnJjigOAqcuU5hPacybYBJCMY7gojOl0Hkekx8IuUIoHQtgT1dETMONRIUAUSGwsYEjdgXhSkpxWeFBIG2D9hgCBNihNGRGSxh8Xnx90+22by0hOkF/UQy3KPp3hH6IzEYmoKGaL72521ixWYs8YwPue6O15OTpiVY0WgqbyX3HIyhwleS4Daw1bwW9rJ4+Lh+7gHU+evAYygOyokFvjhNhu410meQJ3ZqxtoW2xlKHP0f3bV04UoOnmtEOJAqHUah+o2NwEuK0zGHInk87OrW8A83HZixyS8DP2d/9fFL4S/WUj+3LjJoxJ8KiHdqKGaMz1TldVkLcrkggDTGD5SuxBuu4eGgd0WRx/GyXAwYvx2Jmqz2RzaDLnNrLYnWVzej9hj/Yv1/StntjB4z4ZHwF1FYZcSWspDhCYZogIQxhTGjO/7AERWsd8jwNUlwjEHUcR6RMXdzhbaEM0lJba514ZKherARGZ8+rE5MG7r4pZ9LThXCVgWSXvLbyyHsrLsnN1SxbbkGOQPnMQg28A+IgyOn9yI4cZ1AnBzaB447y17OSZZuXchqjkVIIvw=
-    distributions: "sdist bdist_wheel"
-    skip_existing: true
-install:
-- pip3 install --upgrade pip
-- pip3 install -r requirements.txt
-script:
-- python3 -m pytest -v || python -m pytest -v
