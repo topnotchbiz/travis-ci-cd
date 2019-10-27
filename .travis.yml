@@ -5,7 +5,8 @@ git:
 language: python
 cache: pip
 deploy:
-    if: "(branch = module-5)" # AND (NOT (type IN (push, pull_request)))"
+    on:
+      branch: module-5 # AND (NOT (type IN (push, pull_request)))"
     os: linux
     dist: xenial
     python: 3.8
