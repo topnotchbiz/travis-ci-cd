@@ -44,6 +44,8 @@ jobs:
     install: skip  # no tests, no depedencies needed
     script: skip  # we're not running tests
     deploy:
+      on:
+        branch: module-5
       provider: pypi
       user: __token__
       password:
