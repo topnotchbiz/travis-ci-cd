@@ -5,6 +5,7 @@ install:
 # command to tests
 script:
   # unit test
-  - python -m pytest -v
+  # - python -m pytest -v
+  pytest
 
 # simple comments testing
