@@ -38,7 +38,7 @@ jobs:
     - python -m pip install --upgrade pip
     env: PATH=/c/Python38:/c/Python38/Scripts:$PATH
   - stage: Deploy
-    if: "(branch = develop) AND (type = push)"
+    if: "(branch = master) AND (type = push)"
     python: 3.8
     install: skip
     script: skip
@@ -48,6 +48,6 @@ jobs:
       password:
         secure: H0Ps+8Kwv8UgDXihy2240ZnpNhIwUqOwAz/dv5c2o1RejvpBfgVEVyX/ozUmxC4T8clOhm4JrhMeEa9umNqolyR02VNrD1JkriHvtKP9rosgVIJf7c+k4T+XvNwZ+dwv/wVCnZGwLvvDzCAPDVcwYTJcjEwWCzyZCcx4+Mn5jSKr/mqF4xZ61emkRRfBd51c0Z8JcHO/S/XG1W2xwdH/og026P60Wml8yDw9kYZGNG9XBjJmHjlykS+m6ry0yh2sbP7MxymFgGLEx7nCws74+OhjDqCXMKYjs9sgLt3U3VSh6kQAxd71yWeQygHVYD0vpCWmrvQMzNE7pyNhHhNulKpYGJYmqFmVlRnFdLIYJfTEEVsUe982Qn/evWvIZ2MkOZ+wZ4qh7rMpQP3DX2TtpuAM3l+PECQK0O2tb2YHCHcbDAhSqRXD7FP7zymZqRAf4ii172GZeCPhbPdA/TafPkvnV0BP1Oe2rZFCaEZdm+ZxUG3Qz/YqsXZkTT5d0nuV5xzltLsrYLc+PHOJv3b+n7tVAasBO4OEknFE6Ld9JWrqTQJGVb6bcLE6v0PBJ+JYXAwh3ELK95mRmAx5llwfIuxhZmY2bRxKuJkZAHJZxs/bQE0enkGgn8R4RXtFYQ8dpYx6RD6qaFVl9mDpOce8MoMZwjgioxYpA8syU4hnP+g=
       on:
-        branch: develop
+        branch: master
       distributions: sdist bdist_wheel
       skip_existing: true
