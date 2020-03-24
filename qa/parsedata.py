@@ -1,5 +1,5 @@
 import pandas as pd
-from pathlib import Path
+
 
 def readData(txt):
     # read txt and normalize
@@ -23,6 +23,7 @@ def generate_pairs():
     df["Answer"]=answers.apply(lambda x: str(x).lower())
 
     return df
+
 
 def convert_to_list(txt):
     """takes a text file and returns a list"""
