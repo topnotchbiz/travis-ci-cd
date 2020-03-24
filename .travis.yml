@@ -4,11 +4,10 @@ git:
   depth: 3
 language: python
 install:
-  - pip3 install --upgrade pip
-  - pip3 install -r requirements.txt
+- pip3 install --upgrade pip
+- pip3 install -r requirements.txt
 script:
-  - python3 -m pytest -v || python -m pytest -v
-
+- python3 -m pytest -v || python -m pytest -v
 cache: pip
 jobs:
   allow_failures:
@@ -41,14 +40,14 @@ jobs:
   - stage: Deploy
     if: "(branch = develop) AND (type = push)"
     python: 3.8
-    install: skip # no tests, no dependencies needed
-    script: skip # we're not running tests
+    install: skip
+    script: skip
     deploy:
       provider: pypi
-      user: "__token__"
+      user: __token__
       password:
-        secure: "gh1JWQmk/nt98bQw530mrBxZ450yMzyoBfCq4KEfeglxljnXcFUIR+NPMxQrUv1eHLnFiaKfF+I7eO0o5vWw4lcaJDpIuQGwHFkE8cxS1OK5i6LDQutYB8GSd2yVKa7YqaAag6WDcX3h0LEK4Np4HDcRBcWQxd1mpTdFaVHhbE4cN4Wpyzgp+TQEqZRFN6zqIbHBzb2z1BsHtHCbdW+6epszV3T5jm327tQ9glVUseeg2Fo9xEf3UdFcHMVrbIwB+v5Bjp1L+L8PFutspoi12xBc+2Y73vB9Z2xqPvjbnykvD5KZQy/fUARkq375cQRWDRq+A3AnYraZEyt2ZSXW3XrQMnNySBskWO5kKtxIqysTEWawKK8XlGkrzsD/b282DhQJYt93MILMOPygXnebelJ7s+9qNYKLz1dnZ4rcyjQ1qDrGcvlZR4X7YJXXbDKvL409OOw1xbOF2MVEtBU/yUw45Yup47XBfL0khEzwC/ACTKE9ce1dI8J0SspdeBYWVttl2XzFFSno7SP65vzpKHHAb1p7nN8rm0vifEkwdOT1Nj9PVatBzmZq6gAqA6Joz1LzwhTbn34QSzThaq4gfoB4af6Jg6HHgg/uO3deudzkiVMZ6nVweB/7a3YaVeLJE1inC5sLtFGo51KnRHBNOIp6hPHD6KhKS68WffVB7NY="
+        secure: H0Ps+8Kwv8UgDXihy2240ZnpNhIwUqOwAz/dv5c2o1RejvpBfgVEVyX/ozUmxC4T8clOhm4JrhMeEa9umNqolyR02VNrD1JkriHvtKP9rosgVIJf7c+k4T+XvNwZ+dwv/wVCnZGwLvvDzCAPDVcwYTJcjEwWCzyZCcx4+Mn5jSKr/mqF4xZ61emkRRfBd51c0Z8JcHO/S/XG1W2xwdH/og026P60Wml8yDw9kYZGNG9XBjJmHjlykS+m6ry0yh2sbP7MxymFgGLEx7nCws74+OhjDqCXMKYjs9sgLt3U3VSh6kQAxd71yWeQygHVYD0vpCWmrvQMzNE7pyNhHhNulKpYGJYmqFmVlRnFdLIYJfTEEVsUe982Qn/evWvIZ2MkOZ+wZ4qh7rMpQP3DX2TtpuAM3l+PECQK0O2tb2YHCHcbDAhSqRXD7FP7zymZqRAf4ii172GZeCPhbPdA/TafPkvnV0BP1Oe2rZFCaEZdm+ZxUG3Qz/YqsXZkTT5d0nuV5xzltLsrYLc+PHOJv3b+n7tVAasBO4OEknFE6Ld9JWrqTQJGVb6bcLE6v0PBJ+JYXAwh3ELK95mRmAx5llwfIuxhZmY2bRxKuJkZAHJZxs/bQE0enkGgn8R4RXtFYQ8dpYx6RD6qaFVl9mDpOce8MoMZwjgioxYpA8syU4hnP+g=
       on:
         branch: develop
-      distributions: "sdist bdist_wheel"
+      distributions: sdist bdist_wheel
       skip_existing: true
