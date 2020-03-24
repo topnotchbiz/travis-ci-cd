@@ -2,48 +2,47 @@ git:
   submodules: false
   quiet: true
   depth: 3
-language: python            # this works for Linux but is an error on macOS or Windows
+language: python
 cache: pip
 jobs:
   allow_failures:
-    - python: 3.8-dev
+  - python: 3.8-dev
   include:
-    - stage: "Tests in Linux"
-      name: "Python 3.8.0 on Xenial Linux"
-      python: 3.8           # this works for Linux but is ignored on macOS or Windows
-    - name: "Python 3.8.0 on Bionic Linux"
-      python: 3.8
-      dist: bionic
-    - name: "Python 3.7.4 on Xenial Linux"
-      python: 3.7
-    - name: "Python 3.8 dev on Xenial Linux"
-      python: 3.8-dev
-      script:
-        - exit 1
-    - stage: "Tests in other Platform"
-      name: "Python 3.7.4 on macOS"
-      os: osx
-      osx_image: xcode11.2  # Python 3.7.4 running on macOS 10.14.4
-      language: shell       # 'language: python' is an error on Travis CI macOS
-    - name: "Python 3.8.0 on Windows"
-      os: windows           # Windows 10.0.17134 N/A Build 17134
-      language: shell       # 'language: python' is an error on Travis CI Windows
-      before_install:
-        - choco install python --version 3.8.0
-        - python -m pip install --upgrade pip
-      env: PATH=/c/Python38:/c/Python38/Scripts:$PATH
-    - stage: deploy
-      if: (branch = develop) AND (type = push)
-      os: linux
-      dist: xenial
-      python: 3.8
-      script:
-        - echo "Deploying (for now)"
-install:
-  - pip3 install --upgrade pip  # all three OSes agree about 'pip3'
-  - pip3 install -r requirements.txt
-
-# 'python' points to Python 2.7 on macOS but points to Python 3.8 on Linux and Windows
-# 'python3' is a 'command not found' error on Windows but 'py' works on Windows only
-script:
-  - python3 -m pytest -v || python -m pytest -v
+  - stage: Tests in Linux
+    name: Python 3.8.0 on Xenial Linux
+    python: 3.8
+  - name: Python 3.8.0 on Bionic Linux
+    python: 3.8
+    dist: bionic
+  - name: Python 3.7.4 on Xenial Linux
+    python: 3.7
+  - name: Python 3.8 dev on Xenial Linux
+    python: 3.8-dev
+    script:
+    - exit 1
+  - stage: Tests in other Platforms
+    name: Python 3.7.4 on macOS
+    os: osx
+    osx_image: xcode11.2
+    language: shell
+  - name: Python 3.8.0 on Windows
+    os: windows
+    language: shell
+    before_install:
+    - choco install python --version 3.8.0
+    - python -m pip install --upgrade pip
+    env: PATH=/c/Python38:/c/Python38/Scripts:$PATH
+  - stage: Deploy
+    if: "(branch = develop) AND (type = push)"
+    python: 3.8
+    install: skip # no tests, no dependencies needed
+    script: skip # we're not running tests
+    deploy:
+      on:
+        branch: develop
+      provider: pypi
+      user: __token__
+      password:
+        secure: gh1JWQmk/nt98bQw530mrBxZ450yMzyoBfCq4KEfeglxljnXcFUIR+NPMxQrUv1eHLnFiaKfF+I7eO0o5vWw4lcaJDpIuQGwHFkE8cxS1OK5i6LDQutYB8GSd2yVKa7YqaAag6WDcX3h0LEK4Np4HDcRBcWQxd1mpTdFaVHhbE4cN4Wpyzgp+TQEqZRFN6zqIbHBzb2z1BsHtHCbdW+6epszV3T5jm327tQ9glVUseeg2Fo9xEf3UdFcHMVrbIwB+v5Bjp1L+L8PFutspoi12xBc+2Y73vB9Z2xqPvjbnykvD5KZQy/fUARkq375cQRWDRq+A3AnYraZEyt2ZSXW3XrQMnNySBskWO5kKtxIqysTEWawKK8XlGkrzsD/b282DhQJYt93MILMOPygXnebelJ7s+9qNYKLz1dnZ4rcyjQ1qDrGcvlZR4X7YJXXbDKvL409OOw1xbOF2MVEtBU/yUw45Yup47XBfL0khEzwC/ACTKE9ce1dI8J0SspdeBYWVttl2XzFFSno7SP65vzpKHHAb1p7nN8rm0vifEkwdOT1Nj9PVatBzmZq6gAqA6Joz1LzwhTbn34QSzThaq4gfoB4af6Jg6HHgg/uO3deudzkiVMZ6nVweB/7a3YaVeLJE1inC5sLtFGo51KnRHBNOIp6hPHD6KhKS68WffVB7NY=
+      distributions: "sdist bdist_wheel"
+      skip_existing: true
