@@ -1,8 +1,5 @@
-import pandas as pd
-from parsedata import generate_pairs
+from .parsedata import generate_pairs
 from nltk.metrics import edit_distance
-import argparse
-
 
 
 def edit_dis(question):
@@ -20,7 +17,7 @@ def edit_dis(question):
     for i in range(len(x)):
         # calculate edit distance
         val_dis = edit_distance(question.split(), x[i].split())
-        if(val_dis < _val):
+        if val_dis < _val:
             _val = val_dis
             x_index = i
     return y[x_index]
