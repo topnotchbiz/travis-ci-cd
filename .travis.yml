@@ -44,11 +44,11 @@ jobs:
     install: skip # no tests, no dependencies needed
     script: skip # we're not running tests
     deploy:
+      provider: pypi
+      user: "__token__"
+      password:
+        secure: "gh1JWQmk/nt98bQw530mrBxZ450yMzyoBfCq4KEfeglxljnXcFUIR+NPMxQrUv1eHLnFiaKfF+I7eO0o5vWw4lcaJDpIuQGwHFkE8cxS1OK5i6LDQutYB8GSd2yVKa7YqaAag6WDcX3h0LEK4Np4HDcRBcWQxd1mpTdFaVHhbE4cN4Wpyzgp+TQEqZRFN6zqIbHBzb2z1BsHtHCbdW+6epszV3T5jm327tQ9glVUseeg2Fo9xEf3UdFcHMVrbIwB+v5Bjp1L+L8PFutspoi12xBc+2Y73vB9Z2xqPvjbnykvD5KZQy/fUARkq375cQRWDRq+A3AnYraZEyt2ZSXW3XrQMnNySBskWO5kKtxIqysTEWawKK8XlGkrzsD/b282DhQJYt93MILMOPygXnebelJ7s+9qNYKLz1dnZ4rcyjQ1qDrGcvlZR4X7YJXXbDKvL409OOw1xbOF2MVEtBU/yUw45Yup47XBfL0khEzwC/ACTKE9ce1dI8J0SspdeBYWVttl2XzFFSno7SP65vzpKHHAb1p7nN8rm0vifEkwdOT1Nj9PVatBzmZq6gAqA6Joz1LzwhTbn34QSzThaq4gfoB4af6Jg6HHgg/uO3deudzkiVMZ6nVweB/7a3YaVeLJE1inC5sLtFGo51KnRHBNOIp6hPHD6KhKS68WffVB7NY="
       on:
         branch: develop
-      provider: pypi
-      user: __token__
-      password:
-        secure: gh1JWQmk/nt98bQw530mrBxZ450yMzyoBfCq4KEfeglxljnXcFUIR+NPMxQrUv1eHLnFiaKfF+I7eO0o5vWw4lcaJDpIuQGwHFkE8cxS1OK5i6LDQutYB8GSd2yVKa7YqaAag6WDcX3h0LEK4Np4HDcRBcWQxd1mpTdFaVHhbE4cN4Wpyzgp+TQEqZRFN6zqIbHBzb2z1BsHtHCbdW+6epszV3T5jm327tQ9glVUseeg2Fo9xEf3UdFcHMVrbIwB+v5Bjp1L+L8PFutspoi12xBc+2Y73vB9Z2xqPvjbnykvD5KZQy/fUARkq375cQRWDRq+A3AnYraZEyt2ZSXW3XrQMnNySBskWO5kKtxIqysTEWawKK8XlGkrzsD/b282DhQJYt93MILMOPygXnebelJ7s+9qNYKLz1dnZ4rcyjQ1qDrGcvlZR4X7YJXXbDKvL409OOw1xbOF2MVEtBU/yUw45Yup47XBfL0khEzwC/ACTKE9ce1dI8J0SspdeBYWVttl2XzFFSno7SP65vzpKHHAb1p7nN8rm0vifEkwdOT1Nj9PVatBzmZq6gAqA6Joz1LzwhTbn34QSzThaq4gfoB4af6Jg6HHgg/uO3deudzkiVMZ6nVweB/7a3YaVeLJE1inC5sLtFGo51KnRHBNOIp6hPHD6KhKS68WffVB7NY=
       distributions: "sdist bdist_wheel"
       skip_existing: true
