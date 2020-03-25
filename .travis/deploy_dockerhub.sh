@@ -1,8 +1,8 @@
 #!/bin/sh
 if [ "${DOCKER_USER}" == "topnotchbiz" ]; then
-    echo ${DOCKER_USER}
+    echo "yes"
 else
-    echo ${DOCKER_PASS}
+    echo "no"
  fi
 #docker login --username ${DOCKER_USER} --password ${DOCKER_PASS}
 #docker build -f Dockerfile -t ${TRAVIS_REPO_SLUG}:latest .
