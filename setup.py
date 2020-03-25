@@ -34,7 +34,7 @@ setup(
     # There are some restrictions on what makes a valid project name
     # specification here:
     # https://packaging.python.org/specifications/core-metadata/#name
-    name='cicdwithtravis',  # Required
+    name='travis-ci-cd',  # Required
 
     # Versions should comply with PEP 440:
     # https://www.python.org/dev/peps/pep-0440/
@@ -75,15 +75,15 @@ setup(
     #
     # This field corresponds to the "Home-Page" metadata field:
     # https://packaging.python.org/specifications/core-metadata/#home-page-optional
-    url='https://github.com/axel-sirota/ci-cd-with-travis',  # Optional
+    url='https://github.com/topnotchbiz/travis-ci-cd',  # Optional
 
     # This should be your name or the name of the organization which owns the
     # project.
-    author='Axel Sirota',  # Optional
+    author='Yin Jin',  # Optional
 
     # This should be a valid email address corresponding to the author listed
     # above.
-    author_email='axel.sirota@gmail.com',  # Optional
+    author_email='jin.yin1229@outlook.com',  # Optional
 
     # Classifiers help users find your project by categorizing it.
     #
