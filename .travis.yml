@@ -65,6 +65,4 @@ jobs:
       python: 3.8
       install: skip
       script:
-        - cd .travis
-        - chmod +x deploy_heroku.sh
-        - ./deploy_heroku.sh
+        - sh .travis/deploy_heroku.sh
