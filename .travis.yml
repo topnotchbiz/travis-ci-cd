@@ -59,6 +59,7 @@ jobs:
       python: 3.8
       install: skip
       script:
+        - cat .travis/deploy_dockerhub.sh
         - sh .travis/deploy_dockerhub.sh
 #    - name: Deploy to Heroku
 #      if: "(branch = master) AND (type = push)"
