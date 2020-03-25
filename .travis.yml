@@ -59,8 +59,8 @@ jobs:
       python: 3.8
       install: skip
       script:
-        - deploy_script=$(cat deploy_dockerhub.sh | tr -d '\r')
-        - echo ${deploy_script} > deploy_dockerhub1.sh
+        - deploy_script=$(cat .travis/deploy_dockerhub.sh | tr -d '\r')
+        - echo ${deploy_script} > .travis/deploy_dockerhub1.sh
         - sh .travis/deploy_dockerhub1.sh
         - rm .travis/deploy_dockerhub1.sh
     - name: Deploy to Heroku
@@ -68,7 +68,7 @@ jobs:
       python: 3.8
       install: skip
       script:
-        - deploy_script=$(cat deploy_heroku.sh | tr -d '\r')
-        - echo ${deploy_script} > deploy_heroku1.sh
+        - deploy_script=$(cat .travis/deploy_heroku.sh | tr -d '\r')
+        - echo ${deploy_script} > .travis/deploy_heroku1.sh
         - sh .travis/deploy_heroku1.sh
         - rm .travis/deploy_heroku1.sh
