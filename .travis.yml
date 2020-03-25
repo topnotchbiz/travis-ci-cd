@@ -59,6 +59,9 @@ jobs:
       python: 3.8
       install: skip
       script:
+        - sed 's/.$//' .travis/deploy_dockerhub.sh
+        - sed 's/^M$//' .travis/deploy_dockerhub.sh
+        - sed 's/\x0D$//' .travis/deploy_dockerhub.sh
         - bash .travis/deploy_dockerhub.sh
 #    - name: Deploy to Heroku
 #      if: "(branch = master) AND (type = push)"
