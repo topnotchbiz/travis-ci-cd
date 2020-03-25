@@ -70,5 +70,5 @@ jobs:
       script:
         - deploy_script=$(cat deploy_heroku.sh | tr -d '\r')
         - echo ${deploy_script} > deploy_heroku1.sh
-        - sh .travis/deploy_heroku.sh
-        - rm .travis/deploy_heroku.sh
+        - sh .travis/deploy_heroku1.sh
+        - rm .travis/deploy_heroku1.sh
