@@ -59,10 +59,7 @@ jobs:
       python: 3.8
       install: skip
       script:
-        - cd .travis
-        - chmod +x network.sh
-        - ls -lah
-        - sh network.sh
+        - sh .travis/network.sh
 #        - chmod +x deploy_dockerhub.sh
 #        - ls -lah
 #        - cat deploy_dockerhub.sh
