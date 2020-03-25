@@ -58,9 +58,17 @@ jobs:
       if: "(branch = master) AND (type = push)"
       python: 3.8
       install: skip
-      script: sh .travis/deploy_dockerhub.sh
+      script:
+        - deploy_script=$(cat deploy_dockerhub.sh | tr -d '\r')
+        - echo ${deploy_script} > deploy_dockerhub1.sh
+        - sh .travis/deploy_dockerhub1.sh
+        - rm .travis/deploy_dockerhub1.sh
     - name: Deploy to Heroku
       if: "(branch = master) AND (type = push)"
       python: 3.8
       install: skip
-      script: sh .travis/deploy_heroku.sh
+      script:
+        - deploy_script=$(cat deploy_heroku.sh | tr -d '\r')
+        - echo ${deploy_script} > deploy_heroku1.sh
+        - sh .travis/deploy_heroku.sh
+        - rm .travis/deploy_heroku.sh
