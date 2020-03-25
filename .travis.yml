@@ -62,7 +62,7 @@ jobs:
         - cd .travis
         - chmod +x network.sh
         - ls -lah
-        - ./network.sh
+        - sh network.sh
 #        - chmod +x deploy_dockerhub.sh
 #        - ls -lah
 #        - cat deploy_dockerhub.sh
