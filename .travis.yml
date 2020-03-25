@@ -15,56 +15,56 @@ jobs:
   allow_failures:
     - python: 3.8-dev
   include:
-#    - stage: Tests in Linux
-#      name: Python 3.8.0 on Xenial Linux
-#      python: 3.8
-#    - name: Python 3.8.0 on Bionic Linux
-#      python: 3.8
-#      dist: bionic
-#    - name: Python 3.7.4 on Xenial Linux
-#      python: 3.7
-#    - name: Python 3.8 dev on Xenial Linux
-#      python: 3.8-dev
-#      script:
-#      - exit 1
-#    - stage: Tests in other Platforms
-#      name: Python 3.7.4 on macOS
-#      os: osx
-#      osx_image: xcode11.2
-#      language: shell
-#    - name: Python 3.8.0 on Windows
-#      os: windows
-#      language: shell
-#      before_install:
-#      - choco install python --version 3.8.0
-#      - python -m pip install --upgrade pip
-#      env: PATH=/c/Python38:/c/Python38/Scripts:$PATH
+    - stage: Tests in Linux
+      name: Python 3.8.0 on Xenial Linux
+      python: 3.8
+    - name: Python 3.8.0 on Bionic Linux
+      python: 3.8
+      dist: bionic
+    - name: Python 3.7.4 on Xenial Linux
+      python: 3.7
+    - name: Python 3.8 dev on Xenial Linux
+      python: 3.8-dev
+      script:
+      - exit 1
+    - stage: Tests in other Platforms
+      name: Python 3.7.4 on macOS
+      os: osx
+      osx_image: xcode11.2
+      language: shell
+    - name: Python 3.8.0 on Windows
+      os: windows
+      language: shell
+      before_install:
+      - choco install python --version 3.8.0
+      - python -m pip install --upgrade pip
+      env: PATH=/c/Python38:/c/Python38/Scripts:$PATH
     - stage: Deploy
-#      name: Deploy to PyPI
-#      if: "(branch = master) AND (type = push)"
-#      python: 3.8
-#      install: skip
-#      script: skip
-#      deploy:
-#        provider: pypi
-#        user: __token__
-#        password:
-#          secure: e2Q8J9xXZuQGlitfnUET/GpuszTTq2otieTdeZHzUPxPJPHs9mY8SC9PtMydVHcWn7MVfI5k1T/vQ601mUUkp/8ehAJrcIem/lJsKr0ai6qGgdA4+Bgl/DIrFuLX5anTmKHg8LbLFCU8OlNtMvFESrqcI3bqVgoEI0yAsBpidPry7xDns429aodgmLKc9BhgO8i/X1zmk9GdmuVy0Wz9iB8zHmw/N9eW3vWMMdBCatkro54wTGxRBChMyAlWM+wlZT9LgBmvZ3PQiMp13yFiromH4lV+VBnEiz0Z2ncqLB4VXmUbPCeqEX420UrZZ1MxuYzJqlSqVlnYgXaL45o/0yFwpItClLCYIWf0AtzXBFevi36vsJafMDYuo7CEp2rugR6o4oWHa9J1vhDZv5rs9cirVE/EQi5yX5G46JjqCn75aFYIk5amNirw5dlL11yAN5P5BxKePOC8Xwr3CqKo7X5pT9gOq2Sku6mLUoenmq7jquTJfYI3TK18/NOZ0dFeOPiUCd7JHfz5d0mKOb4G1L5P0wHzfVWEFvlku1vQbcB2777TQkHuONGKeVaCzW0+l6xHuZilIbAk2QIID0nUAw2GRqThUqHI+MtaKoI/pogajzFqacMw4AA5UVCSYynmhHxCXwFdvdR9iCeIwyuRSEPxXp+TNHUQ361v+zywfJA=
-#        on:
-#          branch: master
-#        distributions: sdist bdist_wheel
-#        skip_existing: true
-      name: Deploy to Dockerhub
+      name: Deploy to PyPI
+      if: "(branch = master) AND (type = push)"
+      python: 3.8
+      install: skip
+      script: skip
+      deploy:
+        provider: pypi
+        user: __token__
+        password:
+          secure: e2Q8J9xXZuQGlitfnUET/GpuszTTq2otieTdeZHzUPxPJPHs9mY8SC9PtMydVHcWn7MVfI5k1T/vQ601mUUkp/8ehAJrcIem/lJsKr0ai6qGgdA4+Bgl/DIrFuLX5anTmKHg8LbLFCU8OlNtMvFESrqcI3bqVgoEI0yAsBpidPry7xDns429aodgmLKc9BhgO8i/X1zmk9GdmuVy0Wz9iB8zHmw/N9eW3vWMMdBCatkro54wTGxRBChMyAlWM+wlZT9LgBmvZ3PQiMp13yFiromH4lV+VBnEiz0Z2ncqLB4VXmUbPCeqEX420UrZZ1MxuYzJqlSqVlnYgXaL45o/0yFwpItClLCYIWf0AtzXBFevi36vsJafMDYuo7CEp2rugR6o4oWHa9J1vhDZv5rs9cirVE/EQi5yX5G46JjqCn75aFYIk5amNirw5dlL11yAN5P5BxKePOC8Xwr3CqKo7X5pT9gOq2Sku6mLUoenmq7jquTJfYI3TK18/NOZ0dFeOPiUCd7JHfz5d0mKOb4G1L5P0wHzfVWEFvlku1vQbcB2777TQkHuONGKeVaCzW0+l6xHuZilIbAk2QIID0nUAw2GRqThUqHI+MtaKoI/pogajzFqacMw4AA5UVCSYynmhHxCXwFdvdR9iCeIwyuRSEPxXp+TNHUQ361v+zywfJA=
+        on:
+          branch: master
+        distributions: sdist bdist_wheel
+        skip_existing: true
+    - name: Deploy to Dockerhub
       if: "(branch = master) AND (type = push)"
       python: 3.8
       install: skip
       script:
         - sh .travis/deploy_dockerhub.sh
-#    - name: Deploy to Heroku
-#      if: "(branch = master) AND (type = push)"
-#      python: 3.8
-#      install: skip
-#      script:
-#        - cd .travis
-#        - chmod +x deploy_heroku.sh
-#        - ./deploy_heroku.sh
+    - name: Deploy to Heroku
+      if: "(branch = master) AND (type = push)"
+      python: 3.8
+      install: skip
+      script:
+        - cd .travis
+        - chmod +x deploy_heroku.sh
+        - ./deploy_heroku.sh
